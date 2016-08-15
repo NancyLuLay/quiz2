@@ -1,0 +1,42 @@
+<h1>Support Requests</h1>
+<!-- <% @requests.each do |req| %>
+<%= link_to req.name, request_path(req)%>
+<hr>
+<% end %> -->
+
+<div class="col-sm-3 col-md-3 search-bar">
+    <%= form_tag requests_path, method: 'get', class: 'navbar-form navbar-left', role: 'search' do %>
+      <div class='input-group'>
+        <%= text_field_tag :query, params[:query], size: 150, placeholder: "Search", class: "form-control"%>
+        <div class='input-group-btn'>
+          <%= submit_tag'Submit' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<table border="1" width="50%">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th>Actions</th>
+  </tr>
+
+
+  <tr>
+    <% @requests.each do |req| %>
+       <td><%= req.name %></td>
+       <td><%= req.email %></td>
+       <td><%= req.department %></td>
+       <td><%= req.message %></td>
+       <td><%= link_to "Edit", edit_request_path(req) %>
+           <%= link_to "Delete", request_path(req), method: :delete,
+           data: {confirm: "Are you sure you want to delete this request?"} %>
+          <%= link_to(req.status ? "Undone" : "Done", request_flop_path(req)) %> </td>
+  </tr>
+     <% end %>
+</table>
+
+  <%= paginate @requests %>

@@ -1,0 +1,3 @@
+SELECT department, COUNT(*)
+FROM requests
+GROUP BY department

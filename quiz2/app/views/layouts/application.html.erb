@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz2</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to "New Request", new_request_path %>
+    |
+    <%= link_to "Requests", requests_path %>
+    <hr>
+    <div class="flash-message">
+      <%= flash[:notice] || flash[:alert] %>
+    </div>
+
+    <!-- <div>
+      <%# f.label :self.search%>
+      <%# f.text_area :self.search %>
+    </div> -->
+    <!-- <%# f.submit %> -->
+
+    <%= yield %>
+  </body>
+</html>
