@@ -36,8 +36,6 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.status = !@request.status
     @request.save!
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    puts @request.status
     redirect_to requests_path
   end
 
