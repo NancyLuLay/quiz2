@@ -12,6 +12,6 @@ class Request < ApplicationRecord
   private
 
   def set_status_default
-    self.status = false
+    self.status ||= false
   end
 end

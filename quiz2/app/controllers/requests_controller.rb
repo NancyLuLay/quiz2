@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
 
-  before_action :find_request, only: [:show, :edit, :update, :destroy]
+  before_action :find_request, only: [:show, :edit, :flop, :update, :destroy]
 
   REQUEST_PER_PAGE = 7
 
@@ -33,9 +33,11 @@ class RequestsController < ApplicationController
   end
 
   def flop
-    request = Request.find(params[:id])
-    request.status = !request.status
-    request.save
+    @request = Request.find(params[:id])
+    @request.status = !@request.status
+    @request.save!
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts @request.status
     redirect_to requests_path
   end
 
